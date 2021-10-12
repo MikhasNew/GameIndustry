@@ -1,0 +1,45 @@
+﻿@page "/counter"
+
+<h1>Counter</h1>
+
+<p>Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+<GameListTable Games="games"></GameListTable>
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+
+    private List<Game> games;
+    protected async override Task OnInitializedAsync()
+    {
+
+        await Task.Delay(2000);
+        games = new List<Game>()
+        {
+
+            new Game()
+            {
+            Name = "Farning Simulator",
+            Genre = "Simulator",
+            ReleaseDate = new DateTime(2018,11,19)
+            },
+            new Game()
+            { Name = "The Wither 3",
+            Genre = "Action",
+            ReleaseDate = new DateTime(2015,05,18)
+            },
+            new Game()
+            { Name = "Distroy All Humans!",
+            Genre = "Adventur",
+            ReleaseDate = new DateTime(2020,07,28)
+            }
+        };
+    }
+}

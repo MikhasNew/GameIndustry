@@ -1,0 +1,50 @@
+﻿@page "/"
+
+<div class="row">
+    <div class="col text-center">
+        <h1>Welcom to our Game Indastry Page</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col text-center">
+        <h2>Show all gamess in MOCK Database:</h2>
+    </div>
+</div>
+
+<GameListTable Games="@games"/>
+<IndividualGame Game="@games[1]" IsTable="false" DisplayBattons="true" />
+
+@code
+{
+    private List<Game> games;
+    protected async override Task OnInitializedAsync()
+    {
+
+       // await Task.Delay(2000);
+        games = new List<Game>()
+        {
+
+            new Game()
+            { 
+            Name = "Farning Simulator",
+            Genre = "Simulator",
+            ReleaseDate = new DateTime(2018,11,19)
+            },
+            new Game()
+            { Name = "The Wither 3",
+            Genre = "Action",
+            ReleaseDate = new DateTime(2015,05,18)
+            },
+            new Game()
+            { Name = "Distroy All Humans!",
+            Genre = "Adventur",
+            ReleaseDate = new DateTime(2020,07,28)
+            }
+        };
+        }
+}
+
+
+
+

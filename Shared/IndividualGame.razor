@@ -1,0 +1,57 @@
+﻿@if (!IsTable)
+{
+    <div class="row text-center alert alert-info">
+        <div class="coll">
+            <p>@Game.Name</p>
+            <p>@Game.Genre</p>
+            <p>@Game.ReleaseDate.ToString("d")</p>
+        </div>
+    </div>
+    @if (DisplayBattons)
+    {
+        <div class="row text-center alert alert-info">
+            <div class="coll offset-3">
+                <button class="btn btn-danger" @onclick="Delete">Delete</button>
+            </div>
+            <div class="col">
+                @if (message != null)
+                {
+                    @message;
+                }
+            </div>
+        </div>
+    }
+}
+else
+{
+    <tr>
+        <td>@Game.Name</td>
+        <td>@Game.Genre</td>
+        <td>@Game.ReleaseDate.ToString("d")</td>
+        <td>
+            @if (DisplayBattons)
+            {
+                <button class="btn btn-danger" @onclick="Delete">Delete</button>
+            }
+        </td>
+        <td>
+            @if (message != null)
+            {
+                @message;
+            }
+        </td>
+    </tr>
+}
+
+@code {
+    [Parameter] public Game Game { get; set; }
+    [Parameter] public bool IsTable { get; set; }
+    [Parameter] public bool DisplayBattons { get; set; } = false;
+
+
+    string message;
+    private void Delete()
+    {
+        message = $"Game {Game.Name} default!";
+    }
+}
